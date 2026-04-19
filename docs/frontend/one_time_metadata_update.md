@@ -21,19 +21,19 @@ This document describes how to implement the **metadata session** flow in the fr
 
 ## API endpoints
 
-Use your deployed origin and API version root (e.g. `https://api.example.com` + `/v1`). Metadata routes share prefix **`/v1/audio/metadata/`**; the steps below use path **suffixes** only (append to that prefix).
+Use your deployed origin and API version root (e.g. `https://api.example.com` + `/v1`). Metadata routes share prefix **`/v1/`**; the steps below use path **suffixes** only (append to that prefix).
 
 ### Step 1: Create session (upload)
 
 - **Method**: `POST`
-- **URL**: **`session/`** (full path: `/v1/audio/metadata/session/`)
+- **URL**: **`session/`** (full path: `/v1/session/`)
 - **Request**:
-  - **Option A (file upload)**  
-    - `Content-Type: multipart/form-data`  
-    - Body: `file` = the audio file (required)  
+  - **Option A (file upload)**
+    - `Content-Type: multipart/form-data`
+    - Body: `file` = the audio file (required)
     - Optional: `include_musicbrainz_analysis` = `true` to get MusicBrainz lookup in the response
-  - **Option B (URL)**  
-    - `Content-Type: application/json`  
+  - **Option B (URL)**
+    - `Content-Type: application/json`
     - Body: `{ "file": "https://example.com/audio.mp3", "include_musicbrainz_analysis": false }`
 - **Response**: `200 OK`, JSON. Same shape as the full metadata endpoint (`POST full/` under the same prefix), plus:
   - `sessionToken` (or `session_token` depending on your API’s response casing)
@@ -42,7 +42,7 @@ Use your deployed origin and API version root (e.g. `https://api.example.com` + 
 **Example (multipart with fetch)**:
 
 ```javascript
-const metadataBase = "/v1/audio/metadata/";
+const metadataBase = "/v1/";
 const formData = new FormData();
 formData.append("file", audioFile);
 formData.append("include_musicbrainz_analysis", "true");
@@ -53,7 +53,8 @@ const response = await fetch(`${metadataBase}session/`, {
 });
 const data = await response.json();
 const sessionToken = data.sessionToken ?? data.session_token;
-const expiresIn = data.sessionExpiresInSeconds ?? data.session_expires_in_seconds;
+const expiresIn =
+  data.sessionExpiresInSeconds ?? data.session_expires_in_seconds;
 // Store sessionToken; use it for download. Optionally show a countdown for expiresIn.
 ```
 
@@ -63,7 +64,7 @@ If your API returns camelCase (e.g. `sessionToken`, `sessionExpiresInSeconds`), 
 ### Step 2: Download (apply metadata and get file)
 
 - **Method**: `POST`
-- **URL**: **`session-download/`** (full path: `/v1/audio/metadata/session-download/`)
+- **URL**: **`session-download/`** (full path: `/v1/session-download/`)
 - **Request**:
   - **Session token** (required): send either
     - Header: `X-Session-Token: <sessionToken>`
@@ -77,7 +78,7 @@ If your API returns camelCase (e.g. `sessionToken`, `sessionExpiresInSeconds`), 
 **Example (token in header, metadata in body)**:
 
 ```javascript
-const metadataBase = "/v1/audio/metadata/";
+const metadataBase = "/v1/";
 const response = await fetch(`${metadataBase}session-download/`, {
   method: "POST",
   headers: {
@@ -103,9 +104,13 @@ if (!response.ok) {
 
 const blob = await response.blob();
 const contentDisposition = response.headers.get("Content-Disposition") ?? "";
-const filenameStar = contentDisposition.match(/filename\*=UTF-8''([^;]+)/i)?.[1];
+const filenameStar = contentDisposition.match(
+  /filename\*=UTF-8''([^;]+)/i,
+)?.[1];
 const filenameBasic = contentDisposition.match(/filename="([^"]+)"/i)?.[1];
-const filename = filenameStar ? decodeURIComponent(filenameStar) : (filenameBasic ?? "download");
+const filename = filenameStar
+  ? decodeURIComponent(filenameStar)
+  : (filenameBasic ?? "download");
 // Trigger download: e.g. create object URL and <a download>
 const url = URL.createObjectURL(blob);
 const a = document.createElement("a");
@@ -142,13 +147,13 @@ Send only the fields you want to write; omit others to leave them unchanged.
 
 ## Errors
 
-| Status | Meaning |
-|--------|--------|
-| 400 | Bad request (e.g. missing file, invalid format, or missing session token on download). |
-| 410 | Session not found or expired. User should create a new session (upload again). |
-| 413 | File too large. |
+| Status | Meaning                                                                                |
+| ------ | -------------------------------------------------------------------------------------- |
+| 400    | Bad request (e.g. missing file, invalid format, or missing session token on download). |
+| 410    | Session not found or expired. User should create a new session (upload again).         |
+| 413    | File too large.                                                                        |
 
 ## Summary
 
-- **Upload** → `POST session/` (under `/v1/audio/metadata/`) with file (or URL) → store `sessionToken`, show metadata.
+- **Upload** → `POST session/` (under `/v1/`) with file (or URL) → store `sessionToken`, show metadata.
 - **Download** → `POST session-download/` with `X-Session-Token` (or `session_token` in body) + optional metadata JSON → receive file, trigger download. Repeat as needed until the session expires (15 minutes).

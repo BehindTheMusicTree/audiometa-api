@@ -32,6 +32,19 @@ MIDDLEWARE = [
 ROOT_URLCONF = "api.urls"
 WSGI_APPLICATION = "api.wsgi.application"
 
+TEMPLATES = [
+    {
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.request",
+            ],
+        },
+    },
+]
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -80,7 +93,7 @@ CACHES = {
 }
 
 API_ROOT_BASE = os.environ.get("API_ROOT_BASE", "v1/")
-API_METADATA_ROUTE_PREFIX = "audio/metadata/"
+API_METADATA_ROUTE_PREFIX = ""
 
 AFP_BASE_URL = os.environ.get("AFP_BASE_URL", "localhost")
 AFP_PORT = os.environ.get("AFP_PORT", "3002")

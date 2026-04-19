@@ -8,7 +8,7 @@ No account is required; no data is persisted beyond the 15-minute session.
 
 ## Base URLs
 
-Prefix **`/v1/audio/metadata/`** (see `API_ROOT_BASE` + `API_METADATA_ROUTE_PREFIX` in `api/settings.py`).
+Prefix **`/v1/`** (see `API_ROOT_BASE` in `api/settings.py`).
 
 - Create session: **`session/`**
 - Download: **`session-download/`**
@@ -105,9 +105,9 @@ Session files are stored in the directory configured as `METADATA_SESSION_DIR` (
 
 ## Summary
 
-| Step | Endpoint | Action |
-|------|----------|--------|
-| 1 | `POST session/` | Upload file (or URL); get metadata + `session_token` + `session_expires_in_seconds` (900). |
-| 2 | `POST session-download/` | Send `X-Session-Token` (or `session_token` in body) + optional metadata; get file with tags written. Repeatable until session expires. |
+| Step | Endpoint                 | Action                                                                                                                                 |
+| ---- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
+| 1    | `POST session/`          | Upload file (or URL); get metadata + `session_token` + `session_expires_in_seconds` (900).                                             |
+| 2    | `POST session-download/` | Send `X-Session-Token` (or `session_token` in body) + optional metadata; get file with tags written. Repeatable until session expires. |
 
 Session TTL: **15 minutes**. Multi-use: **yes** (multiple downloads per session).
