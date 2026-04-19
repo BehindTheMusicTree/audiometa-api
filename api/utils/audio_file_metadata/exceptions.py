@@ -1,0 +1,2 @@
+class FileCorruptedError(Exception):
+    pass
