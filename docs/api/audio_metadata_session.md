@@ -22,7 +22,7 @@ None (public endpoints).
 ### POST /v1/audio/metadata/session/
 
 **Description**  
-Upload an audio file (or send a URL to an audio file). The server stores the file temporarily, returns the same metadata shape as audiometa-python `get_full_metadata` (read-only fields plus schema/supported-field lists), plus a **session token** and **session_expires_in_seconds** (900 = 15 minutes). Use the token in the download endpoint.
+Upload an audio file (or send a URL to an audio file). The server stores the file temporarily, returns the same metadata shape as [`POST /v1/audio/metadata/full/`](audio_metadata.md) (audiometa-python `get_full_metadata`), plus a **session token** and **session_expires_in_seconds** (900 = 15 minutes). Use the token in the download endpoint.
 
 **Request**
 

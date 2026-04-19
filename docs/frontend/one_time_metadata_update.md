@@ -1,5 +1,16 @@
 # Frontend: Metadata session (no auth)
 
+## Contents
+
+- [Flow overview](#flow-overview)
+- [API endpoints](#api-endpoints)
+  - [Step 1: Create session (upload)](#step-1-create-session-upload)
+  - [Step 2: Download (apply metadata and get file)](#step-2-download-apply-metadata-and-get-file)
+- [UI/UX suggestions](#uiux-suggestions)
+- [Field names](#field-names)
+- [Errors](#errors)
+- [Summary](#summary)
+
 This document describes how to implement the **metadata session** flow in the frontend: upload a file, show/edit metadata, then download the file with updated tags. No user account is required.
 
 ## Flow overview
