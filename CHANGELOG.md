@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- **Dependencies**: Declared in **PEP 621** `pyproject.toml` (pinned runtime deps + `dev` extra for pytest). Removed `requirements.txt`; pytest config lives under `[tool.pytest.ini_options]`.
+
 ### Added
 
 - Initial **AudioMeta API** service: metadata session upload and session-download endpoints, docs, and tests split out from HearTheMusicTree API.
-- **`POST full/`** under **`/v1/audio/metadata/`** — read full file metadata (same behaviour as previously on HearTheMusicTree API); documentation in `docs/api/audio_metadata.md`.
+- **`POST /v1/audio/metadata/full/`** — read full file metadata (same behaviour as previously on HearTheMusicTree API); documentation in `docs/api/audio_metadata.md`.

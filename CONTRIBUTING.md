@@ -47,7 +47,7 @@ cd audiometa-api
 
 python3 -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+pip install ".[dev]"
 
 # Optional: copy env template and adjust
 cp env/dev/.env.dev.example env/.env
@@ -73,7 +73,7 @@ Open `http://127.0.0.1:8000/docs/` for Swagger.
 pytest
 ```
 
-Tests live under `api/test/tests/`. Conftest mocks external AcoustID/fingerprint calls by default so CI stays offline-friendly.
+Tests live under `api/test/tests/`. Pytest options are in **`pyproject.toml`** under `[tool.pytest.ini_options]` (no separate `pytest.ini`). Conftest mocks external AcoustID/fingerprint calls by default so CI stays offline-friendly.
 
 ## Changelog
 

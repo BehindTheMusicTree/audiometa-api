@@ -9,13 +9,10 @@ Always pin exact versions for all dependencies. Never use "latest", "*", or vers
 - Avoid: `"latest"`, `"*"`, `"^1.2.3"` (caret ranges), `"~1.2.3"` (tilde ranges)
 - Exception: Caret ranges (`^`) are acceptable for devDependencies if explicitly needed, but prefer exact versions
 
-### Python/requirements.txt
-- Use exact versions: `package-name==1.2.3`
-- Avoid: `package-name>=1.2.3`, `package-name`, `package-name~=1.2.3`
-
-### pip/pyproject.toml
-- Use exact versions: `package-name = "==1.2.3"`
-- Avoid: version ranges or unpinned dependencies
+### Python / PEP 621 (`pyproject.toml`)
+- Declare dependencies under `[project]` (and optional groups like `[project.optional-dependencies] dev`) with **exact pins**: `package-name==1.2.3`.
+- Avoid: bare names, `>=` / `~=` ranges, or unpinned dependencies unless you document an explicit exception.
+- Install for local dev and CI: `pip install ".[dev]"` (editable: `pip install -e ".[dev]"`).
 
 ## Benefits
 - Ensures reproducible builds
