@@ -21,12 +21,12 @@ This document describes how to implement the **metadata session** flow in the fr
 
 ## API endpoints
 
-Base URL is your API root (e.g. `https://api.example.com/v1`).
+Use your deployed origin and API version root (e.g. `https://api.example.com` + `/v1`). Metadata routes share prefix **`/v1/audio/metadata/`**; the steps below use path **suffixes** only (append to that prefix).
 
 ### Step 1: Create session (upload)
 
 - **Method**: `POST`
-- **URL**: `/v1/audio/metadata/session/`
+- **URL**: **`session/`** (full path: `/v1/audio/metadata/session/`)
 - **Request**:
   - **Option A (file upload)**  
     - `Content-Type: multipart/form-data`  
@@ -35,18 +35,19 @@ Base URL is your API root (e.g. `https://api.example.com/v1`).
   - **Option B (URL)**  
     - `Content-Type: application/json`  
     - Body: `{ "file": "https://example.com/audio.mp3", "include_musicbrainz_analysis": false }`
-- **Response**: `200 OK`, JSON. Same shape as the full metadata endpoint (`POST /v1/audio/metadata/full/`), plus:
+- **Response**: `200 OK`, JSON. Same shape as the full metadata endpoint (`POST full/` under the same prefix), plus:
   - `sessionToken` (or `session_token` depending on your API’s response casing)
   - `sessionExpiresInSeconds` (or `session_expires_in_seconds`) = `900` (15 minutes)
 
 **Example (multipart with fetch)**:
 
 ```javascript
+const metadataBase = "/v1/audio/metadata/";
 const formData = new FormData();
 formData.append("file", audioFile);
 formData.append("include_musicbrainz_analysis", "true");
 
-const response = await fetch("/v1/audio/metadata/session/", {
+const response = await fetch(`${metadataBase}session/`, {
   method: "POST",
   body: formData,
 });
@@ -62,7 +63,7 @@ If your API returns camelCase (e.g. `sessionToken`, `sessionExpiresInSeconds`), 
 ### Step 2: Download (apply metadata and get file)
 
 - **Method**: `POST`
-- **URL**: `/v1/audio/metadata/session-download/`
+- **URL**: **`session-download/`** (full path: `/v1/audio/metadata/session-download/`)
 - **Request**:
   - **Session token** (required): send either
     - Header: `X-Session-Token: <sessionToken>`
@@ -76,7 +77,8 @@ If your API returns camelCase (e.g. `sessionToken`, `sessionExpiresInSeconds`), 
 **Example (token in header, metadata in body)**:
 
 ```javascript
-const response = await fetch("/v1/audio/metadata/session-download/", {
+const metadataBase = "/v1/audio/metadata/";
+const response = await fetch(`${metadataBase}session-download/`, {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -148,5 +150,5 @@ Send only the fields you want to write; omit others to leave them unchanged.
 
 ## Summary
 
-- **Upload** → `POST /v1/audio/metadata/session/` with file (or URL) → store `sessionToken`, show metadata.
-- **Download** → `POST /v1/audio/metadata/session-download/` with `X-Session-Token` (or `session_token` in body) + optional metadata JSON → receive file, trigger download. Repeat as needed until the session expires (15 minutes).
+- **Upload** → `POST session/` (under `/v1/audio/metadata/`) with file (or URL) → store `sessionToken`, show metadata.
+- **Download** → `POST session-download/` with `X-Session-Token` (or `session_token` in body) + optional metadata JSON → receive file, trigger download. Repeat as needed until the session expires (15 minutes).

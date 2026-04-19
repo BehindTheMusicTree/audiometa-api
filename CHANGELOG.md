@@ -10,4 +10,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Initial **AudioMeta API** service: metadata session upload and session-download endpoints, docs, and tests split out from HearTheMusicTree API.
-- **`POST /v1/audio/metadata/full/`** — read full file metadata (same behaviour as previously on HearTheMusicTree API); documentation in `docs/api/audio_metadata.md`.
+- **`POST full/`** under **`/v1/audio/metadata/`** — read full file metadata (same behaviour as previously on HearTheMusicTree API); documentation in `docs/api/audio_metadata.md`.

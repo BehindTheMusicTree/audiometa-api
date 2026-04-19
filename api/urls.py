@@ -8,10 +8,10 @@ from api.view.AudioMetadataSessionView import AudioMetadataSessionView
 from api.view.health import HealthCheckView
 
 urlpatterns = [
-    path(settings.API_ROOT_BASE + "audio/metadata/full/", AudioMetadataView.as_view(), name="audio-metadata-full"),
-    path(settings.API_ROOT_BASE + "audio/metadata/session/", AudioMetadataSessionView.as_view(), name="audio-metadata-session"),
+    path(settings.API_ROOT_BASE + settings.API_METADATA_ROUTE_PREFIX + "full/", AudioMetadataView.as_view(), name="audio-metadata-full"),
+    path(settings.API_ROOT_BASE + settings.API_METADATA_ROUTE_PREFIX + "session/", AudioMetadataSessionView.as_view(), name="audio-metadata-session"),
     path(
-        settings.API_ROOT_BASE + "audio/metadata/session-download/",
+        settings.API_ROOT_BASE + settings.API_METADATA_ROUTE_PREFIX + "session-download/",
         AudioMetadataSessionDownloadView.as_view(),
         name="audio-metadata-session-download",
     ),

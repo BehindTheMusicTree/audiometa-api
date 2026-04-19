@@ -8,8 +8,10 @@ No account is required; no data is persisted beyond the 15-minute session.
 
 ## Base URLs
 
-- Create session: `/v1/audio/metadata/session/`
-- Download: `/v1/audio/metadata/session-download/`
+Prefix **`/v1/audio/metadata/`** (see `API_ROOT_BASE` + `API_METADATA_ROUTE_PREFIX` in `api/settings.py`).
+
+- Create session: **`session/`**
+- Download: **`session-download/`**
 
 ## Authentication
 
@@ -19,10 +21,10 @@ None (public endpoints).
 
 ## Step 1: Create session (upload)
 
-### POST /v1/audio/metadata/session/
+### POST session/
 
 **Description**  
-Upload an audio file (or send a URL to an audio file). The server stores the file temporarily, returns the same metadata shape as [`POST /v1/audio/metadata/full/`](audio_metadata.md) (audiometa-python `get_full_metadata`), plus a **session token** and **session_expires_in_seconds** (900 = 15 minutes). Use the token in the download endpoint.
+Upload an audio file (or send a URL to an audio file). The server stores the file temporarily, returns the same metadata shape as [`POST full/`](audio_metadata.md) (audiometa-python `get_full_metadata`), plus a **session token** and **session_expires_in_seconds** (900 = 15 minutes). Use the token in the download endpoint.
 
 **Request**
 
@@ -59,7 +61,7 @@ Same as full metadata (400, 413 for invalid or oversized file).
 
 ## Step 2: Download (apply metadata and get file)
 
-### POST /v1/audio/metadata/session-download/
+### POST session-download/
 
 **Description**  
 Returns the file associated with the session token, with optional metadata written in. You can call this **multiple times** with the same token and different metadata; the session stays valid until it expires (15 minutes after creation).
@@ -105,7 +107,7 @@ Session files are stored in the directory configured as `METADATA_SESSION_DIR` (
 
 | Step | Endpoint | Action |
 |------|----------|--------|
-| 1 | `POST /v1/audio/metadata/session/` | Upload file (or URL); get metadata + `session_token` + `session_expires_in_seconds` (900). |
-| 2 | `POST /v1/audio/metadata/session-download/` | Send `X-Session-Token` (or `session_token` in body) + optional metadata; get file with tags written. Repeatable until session expires. |
+| 1 | `POST session/` | Upload file (or URL); get metadata + `session_token` + `session_expires_in_seconds` (900). |
+| 2 | `POST session-download/` | Send `X-Session-Token` (or `session_token` in body) + optional metadata; get file with tags written. Repeatable until session expires. |
 
 Session TTL: **15 minutes**. Multi-use: **yes** (multiple downloads per session).

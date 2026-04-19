@@ -4,11 +4,13 @@ Small Django service for the **metadata session** flow: upload audio (or URL), r
 
 ## Endpoints
 
+Metadata routes share prefix **`/v1/audio/metadata/`** (defaults: `API_ROOT_BASE` + `API_METADATA_ROUTE_PREFIX` in `api/settings.py`, wired in `api/urls.py`).
+
 | Step | Method | Path |
 |------|--------|------|
-| Read metadata (no storage) | `POST` | `/v1/audio/metadata/full/` |
-| Create session | `POST` | `/v1/audio/metadata/session/` |
-| Download with tags | `POST` | `/v1/audio/metadata/session-download/` |
+| Read metadata (no storage) | `POST` | `full/` |
+| Create session | `POST` | `session/` |
+| Download with tags | `POST` | `session-download/` |
 | Health | `GET` | `/health/` |
 | OpenAPI schema | `GET` | `/schema/` |
 | Swagger UI | `GET` | `/docs/` |

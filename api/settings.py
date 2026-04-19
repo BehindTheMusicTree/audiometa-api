@@ -80,6 +80,7 @@ CACHES = {
 }
 
 API_ROOT_BASE = os.environ.get("API_ROOT_BASE", "v1/")
+API_METADATA_ROUTE_PREFIX = "audio/metadata/"
 
 AFP_BASE_URL = os.environ.get("AFP_BASE_URL", "localhost")
 AFP_PORT = os.environ.get("AFP_PORT", "3002")
