@@ -6,29 +6,29 @@ Thanks for helping improve this service. The repo follows the same engineering h
 
 These mirror the parent API repo except **private-resource filtering** (not applicable here—no per-user library models).
 
-| Rule | Purpose |
-|------|---------|
-| [one-class-per-file.mdc](.cursor/rules/one-class-per-file.mdc) | One class per file |
-| [divide-test-cases.mdc](.cursor/rules/divide-test-cases.mdc) | Split test cases |
-| [use-assert-not-assertequal.mdc](.cursor/rules/use-assert-not-assertequal.mdc) | Prefer `assert` over `assertEqual` |
-| [field-name-constants.mdc](.cursor/rules/field-name-constants.mdc) | Field name constants |
-| [pull-request-convention.mdc](.cursor/rules/pull-request-convention.mdc) | PR conventions |
-| [focused-tests.mdc](.cursor/rules/focused-tests.mdc) | Focused tests |
-| [openapi-validation-documentation.mdc](.cursor/rules/openapi-validation-documentation.mdc) | OpenAPI / validation docs |
-| [pre-pr-checklist.mdc](.cursor/rules/pre-pr-checklist.mdc) | Pre-PR checklist |
-| [issue-description-in-separate-file.mdc](.cursor/rules/issue-description-in-separate-file.mdc) | Issue drafts location |
-| [changelog-best-practices.mdc](.cursor/rules/changelog-best-practices.mdc) | Changelog style |
-| [changelog-entry-placement.mdc](.cursor/rules/changelog-entry-placement.mdc) | Where to add changelog entries |
-| [test-naming-convention.mdc](.cursor/rules/test-naming-convention.mdc) | Test naming |
-| [use-custome-validation-exception.mdc](.cursor/rules/use-custome-validation-exception.mdc) | Custom validation errors |
-| [no-useless-comments.mdc](.cursor/rules/no-useless-comments.mdc) | Avoid noise comments |
-| [use-pipe-none.mdc](.cursor/rules/use-pipe-none.mdc) | Prefer `\|` for optional types |
-| [issue-template-usage.mdc](.cursor/rules/issue-template-usage.mdc) | Issue templates |
-| [comments.mdc](.cursor/rules/comments.mdc) | When to comment |
-| [pr-description-in-separate-file.mdc](.cursor/rules/pr-description-in-separate-file.mdc) | PR descriptions in `.github/pr-descriptions/` |
-| [commit-message-convention.mdc](.cursor/rules/commit-message-convention.mdc) | Commit messages |
-| [test-structure.mdc](.cursor/rules/test-structure.mdc) | Test layout |
-| [git-flow-workflow.mdc](.cursor/rules/git-flow-workflow.mdc) | Git Flow / branches |
+| Rule                                                                                           | Purpose                                       |
+| ---------------------------------------------------------------------------------------------- | --------------------------------------------- |
+| [one-class-per-file.mdc](.cursor/rules/one-class-per-file.mdc)                                 | One class per file                            |
+| [divide-test-cases.mdc](.cursor/rules/divide-test-cases.mdc)                                   | Split test cases                              |
+| [use-assert-not-assertequal.mdc](.cursor/rules/use-assert-not-assertequal.mdc)                 | Prefer `assert` over `assertEqual`            |
+| [field-name-constants.mdc](.cursor/rules/field-name-constants.mdc)                             | Field name constants                          |
+| [pull-request-convention.mdc](.cursor/rules/pull-request-convention.mdc)                       | PR conventions                                |
+| [focused-tests.mdc](.cursor/rules/focused-tests.mdc)                                           | Focused tests                                 |
+| [openapi-validation-documentation.mdc](.cursor/rules/openapi-validation-documentation.mdc)     | OpenAPI / validation docs                     |
+| [pre-pr-checklist.mdc](.cursor/rules/pre-pr-checklist.mdc)                                     | Pre-PR checklist                              |
+| [issue-description-in-separate-file.mdc](.cursor/rules/issue-description-in-separate-file.mdc) | Issue drafts location                         |
+| [changelog-best-practices.mdc](.cursor/rules/changelog-best-practices.mdc)                     | Changelog style                               |
+| [changelog-entry-placement.mdc](.cursor/rules/changelog-entry-placement.mdc)                   | Where to add changelog entries                |
+| [test-naming-convention.mdc](.cursor/rules/test-naming-convention.mdc)                         | Test naming                                   |
+| [use-custome-validation-exception.mdc](.cursor/rules/use-custome-validation-exception.mdc)     | Custom validation errors                      |
+| [no-useless-comments.mdc](.cursor/rules/no-useless-comments.mdc)                               | Avoid noise comments                          |
+| [use-pipe-none.mdc](.cursor/rules/use-pipe-none.mdc)                                           | Prefer `\|` for optional types                |
+| [issue-template-usage.mdc](.cursor/rules/issue-template-usage.mdc)                             | Issue templates                               |
+| [comments.mdc](.cursor/rules/comments.mdc)                                                     | When to comment                               |
+| [pr-description-in-separate-file.mdc](.cursor/rules/pr-description-in-separate-file.mdc)       | PR descriptions in `.github/pr-descriptions/` |
+| [commit-message-convention.mdc](.cursor/rules/commit-message-convention.mdc)                   | Commit messages                               |
+| [test-structure.mdc](.cursor/rules/test-structure.mdc)                                         | Test layout                                   |
+| [git-flow-workflow.mdc](.cursor/rules/git-flow-workflow.mdc)                                   | Git Flow / branches                           |
 
 Also see the repo root [`.cursorrules`](.cursorrules) (pinned dependencies, draft doc locations).
 
@@ -65,7 +65,7 @@ python manage.py migrate --run-syncdb
 python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/docs/` for Swagger.
+Open `http://127.0.0.1:8001/docs/` for Swagger.
 
 ## Tests
 
