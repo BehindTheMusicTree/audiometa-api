@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- **Dev tooling**: Added a `launch` Claude Code skill (`.claude/skills/launch/`) documenting how
+  to start the service locally.
+
 ### Changed
 
 - **Dependencies**: Declared in **PEP 621** `pyproject.toml` (pinned runtime deps + `dev` extra for pytest). Removed `requirements.txt`; pytest config lives under `[tool.pytest.ini_options]`.
