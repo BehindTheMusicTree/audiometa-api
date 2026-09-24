@@ -51,3 +51,6 @@ analysis/
 # Cache (may contain sensitive tokens)
 # =============================================================================
 .cache
+
+# graphify
+graphify-out/

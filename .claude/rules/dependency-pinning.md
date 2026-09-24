@@ -22,10 +22,5 @@ Always pin exact versions for all dependencies. Never use "latest", "*", or vers
 
 # Draft Documents Location
 
-- **PR descriptions**: Always draft in `.github/pr-descriptions/` (see `.cursor/rules/pr-description-in-separate-file.mdc`). That directory is git-ignored except any explicitly tracked template files.
+- **PR descriptions**: Always draft in `.github/pr-descriptions/` (see `.claude/rules/pr-description-in-separate-file.md`). That directory is git-ignored except any explicitly tracked template files.
 - **Other internal planning drafts** (feature notes, etc.): `.github/descriptions/` — git-ignored to keep planning out of version control unless committed intentionally.
-
-
-
-
-
