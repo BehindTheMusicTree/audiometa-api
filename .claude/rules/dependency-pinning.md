@@ -1,0 +1,31 @@
+---
+paths:
+  - "**/*"
+---
+
+# Pin Dependency Versions
+
+Always pin exact versions for all dependencies. Never use "latest", "*", or version ranges without upper bounds.
+
+## Package Managers
+
+### npm/package.json
+- Use exact versions: `"package-name": "1.2.3"`
+- Avoid: `"latest"`, `"*"`, `"^1.2.3"` (caret ranges), `"~1.2.3"` (tilde ranges)
+- Exception: Caret ranges (`^`) are acceptable for devDependencies if explicitly needed, but prefer exact versions
+
+### Python / PEP 621 (`pyproject.toml`)
+- Declare dependencies under `[project]` (and optional groups like `[project.optional-dependencies] dev`) with **exact pins**: `package-name==1.2.3`.
+- Avoid: bare names, `>=` / `~=` ranges, or unpinned dependencies unless you document an explicit exception.
+- Install for local dev and CI: `pip install ".[dev]"` (editable: `pip install -e ".[dev]"`).
+
+## Benefits
+- Ensures reproducible builds
+- Prevents unexpected breaking changes
+- Makes dependency updates explicit and reviewable
+- Improves security by controlling when updates are applied
+
+# Draft Documents Location
+
+- **PR descriptions**: Always draft in `.github/pr-descriptions/` (see `.claude/rules/pr-description-in-separate-file.md`). That directory is git-ignored except any explicitly tracked template files.
+- **Other internal planning drafts** (feature notes, etc.): `.github/descriptions/` — git-ignored to keep planning out of version control unless committed intentionally.
