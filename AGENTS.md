@@ -20,7 +20,7 @@ activities such as commits and PRs, even when no file is edited.
 - For `**/*`, read `.agents/rules/issue-template-usage.md`.
 - For `**/*`, read `.agents/rules/no-useless-comments.md`.
 - For `**/*`, read `.agents/rules/one-class-per-file.md`.
-- For `api/view/**/*.py`, read `.agents/rules/openapi-validation-documentation.md`.
+- For `api/view/**/*.py` and `docs/api/**/*.md`, read `.agents/rules/openapi-validation-documentation.md`.
 - For `**/*`, read `.agents/rules/pr-description-in-separate-file.md`.
 - For `**/*`, read `.agents/rules/pre-pr-checklist.md`.
 - For `**/*`, read `.agents/rules/pull-request-convention.md`.

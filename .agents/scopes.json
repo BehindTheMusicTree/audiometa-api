@@ -68,7 +68,8 @@
   "openapi-validation-documentation": {
     "source": ".agents/rules/openapi-validation-documentation.md",
     "paths": [
-      "api/view/**/*.py"
+      "api/view/**/*.py",
+      "docs/api/**/*.md"
     ]
   },
   "pr-description-in-separate-file": {
