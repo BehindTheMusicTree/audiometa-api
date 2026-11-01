@@ -1,0 +1,22 @@
+{
+  "changelog-best-practices": "ffc3a177f1b4314fa61c3afc37d74ab13d8c0225c1362de180248128c55f57a0",
+  "changelog-entry-placement": "78e9e14c07eafb42317ddf6eb8b5409d601e5fb2e227766586863e7a9217c632",
+  "commit-message-convention": "e721377384e0abc269a3a168ed7f345ce95b04f1708de86db015409038e169e8",
+  "dependency-pinning": "55c6736e37d5fcab825d26d757defb9b40d47b2759bf1aad19c2fe13732f88a5",
+  "divide-test-cases": "30aa748ee91b38a93cb97a9015de663bcdf5f433e731ad640c15191395f3abc6",
+  "field-name-constants": "f30d3ad6b5c21d2efefa92c6b1702ede7e95daa846b67abc1efd15a6faadb931",
+  "git-flow-workflow": "2660ff2eeff6ba52801ca29cd7ce939d30430f44ffaa8a993044b7a252951f82",
+  "issue-description-in-separate-file": "2cd1f2172bb084d400354918d63f1a2857211a7bef7b96d82915da173cd3bc25",
+  "issue-template-usage": "7beb3755f8c97876b258f29266de9ff3e87143ea5270d4e8cbb06582f02c3c59",
+  "no-useless-comments": "49c05db18fca2dc2f9eb1a196c6b034df16c4d1da40262ead0519803cdb0157a",
+  "one-class-per-file": "62301a14cce68bb820f250e18ad59c1cbc3c624d061c9a0fc7d405ee2ea96850",
+  "openapi-validation-documentation": "ae83ade55ec7b2e2aa5db022f41bd4307e1dcb4baecae185037f9e1901ec0fda",
+  "pr-description-in-separate-file": "7436295478b555948f0d1078a6871204e1bb542e9cb7ba278396d0c37d7ba620",
+  "pre-pr-checklist": "afd1b16683fe3f63a3e2a67600da2cc421bd0efa00d6565670ff022e1c2e4807",
+  "pull-request-convention": "cc1301b94c7066081ada9e96fb5c8d5dd1ff9b43f5eb43cfa6eca0a49e0083be",
+  "test-naming-convention": "11bfcda70db90c285e5282d0b7054c81e55e0146ad0edf9aa9cb61ed3d9f40c4",
+  "test-structure": "980d90a96cfe62c0a2bdfe100f70e6928d7ccd59884a9e8c786fd08264568f6f",
+  "use-assert-not-assertequal": "f6062f30df38ecb4029df8eb9618679166f71a71d1d50d39354e99eecfd61d05",
+  "use-custome-validation-exception": "417dc788d8b58d80895595f4f4e25c2448d6d4c4cbbfeefa74adb6659beb7a95",
+  "use-pipe-none": "1e835e6c32c90fee3a4f9e1be6b3e70bc7077fa934b820525b9f16a412d163d5"
+}

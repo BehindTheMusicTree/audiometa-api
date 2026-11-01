@@ -1,3 +1,8 @@
+---
+paths:
+  - "**/*"
+---
+
 # Changelog Entry Placement and De-duplication
 
 When adding or updating entries in `CHANGELOG.md`:

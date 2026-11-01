@@ -1,6 +1,7 @@
 ---
 paths:
   - "api/view/**/*.py"
+  - "docs/api/**/*.md"
 ---
 
 # OpenAPI Validation and Error Documentation
