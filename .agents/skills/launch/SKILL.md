@@ -18,10 +18,11 @@ source .venv/bin/activate
 pip install ".[dev]"
 ```
 
-## 2. Set required env var
+## 2. Activate the environment and set a local development secret
 
 ```bash
-export DJANGO_SECRET_KEY=dev-secret
+source .venv/bin/activate
+export DJANGO_SECRET_KEY="${DJANGO_SECRET_KEY:-dev-secret}"
 ```
 
 ## 3. Migrate and start
@@ -45,5 +46,5 @@ Default: `http://127.0.0.1:8000/`. Health check: `GET /health/`. API docs:
 ## Verify
 
 ```bash
-pytest
+python -m pytest
 ```

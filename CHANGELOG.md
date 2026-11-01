@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- **Dev tooling**: Added a `launch` Claude Code skill (`.claude/skills/launch/`) documenting how
+- **Dev tooling**: Shared a `launch` skill across Claude and Codex documenting how
   to start the service locally.
 
 ### Changed
