@@ -14,6 +14,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Agent directories**: Keep local plans and temporary files out of Git.
+
 - **Agent rules**: Moved `.cursor/rules/*.mdc` and `.cursorrules` to `.claude/rules/*.md` so Claude Code loads them
   natively (`globs` → `paths`). Dropped the duplicate `focused-tests` and `comments` rules (covered by
   `divide-test-cases` and `no-useless-comments`).
